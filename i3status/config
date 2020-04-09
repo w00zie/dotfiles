@@ -7,13 +7,24 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        interval = 5
-        #color_bad = "#DC5600"
-        color_bad = "#b46034"
-        color_degraded = "#bca79d"
-        color_good = "#A5AF86"
+  #output_format = "i3bar"
+  interval = 5
+  colors = true
+  color_good = "#a3be8c"
+  color_degraded = "#d08770"
+  color_bad = "#bf616a"
 }
+
+#general {
+#        colors = true
+#        interval = 5
+#        #color_bad = "#DC5600"
+#        color_bad = "#b46034"
+#        #color_degraded = "#bca79d"
+#        color_degraded = "#de935f"
+#        #color_good = "#A5AF86"
+#        color_good = "#8C9440"
+#}
 
 order += "volume master"
 order += "ipv6"
@@ -70,11 +81,13 @@ battery all {
         status_full = ""
         low_threshold = 15
         threshold_type = percentage
-        color_good = "#A5AF86"
+        # color_good = "#A5AF86"
+        # color_good = "#8C9440"
+	color_good = "#a3be8c"
 }
 
 tztime local {
-        format = " %d-%m-%Y| %H:%M:%S"
+        format = " %A,%d-%m-%Y| %H:%M:%S"
 }
 
 load {

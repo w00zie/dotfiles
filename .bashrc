@@ -130,7 +130,7 @@ export TERM=xterm-256color
 export EDITOR='vim'
 
 # added by Anaconda3 installer
-export PATH="/opt/anaconda3/bin:$PATH"
+export PATH="/opt/miniconda3/bin:$PATH"
 
 # per fare cd direttamente scrivendo il nome della dir
 shopt -s autocd

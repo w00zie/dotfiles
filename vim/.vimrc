@@ -25,57 +25,6 @@
 "    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle enablement "
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-" Plugin 'vim-syntastic/syntastic'
-Plugin 'scrooloose/nerdtree'
-Plugin 'nvie/vim-flake8'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,12 +36,16 @@ set history=500
 " Remove the fucking beep
 set belloff=all
 
+" Set relative numbers
+set number relativenumber
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
+au FocusGained,BufEnter * checktime
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -103,7 +56,7 @@ nmap <leader>w :w!<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -121,8 +74,6 @@ source $VIMRUNTIME/menu.vim
 " Turn on the Wild menu
 set wildmenu
 
-set number relativenumber
-
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
@@ -135,7 +86,7 @@ endif
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -195,7 +146,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme desert
+    colorscheme nord
 catch
 endtry
 
@@ -219,7 +170,7 @@ set ffs=unix,dos,mac
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
+" Turn backup off, since most stuff is in SVN, git etc. anyway...
 set nobackup
 set nowb
 set noswapfile
@@ -261,7 +212,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
-map <c-space> ?
+map <C-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -296,7 +247,7 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
