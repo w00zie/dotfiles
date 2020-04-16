@@ -1,18 +1,25 @@
 # My dotfiles
 
-Nord'ed pretty much everything.
+I [nord](https://github.com/arcticicestudio/nord)'ed pretty much everything on my i3-gaps config.
 
 ## Terminal / Vim
 
 I use urxvt + vim
 
-![](screen_1.jpg)
+![](img/screen_1.jpg)
 
 ## File Manager
 
 I use both Nautilus and Ranger
 
-![](screen_2.jpg)
+![](img/screen_2.jpg)
+
+## Text Editor
+
+I use [VSCodium](https://github.com/VSCodium/vscodium)
+
+![](img/screen_3.jpg)
+
 
 ##
 
